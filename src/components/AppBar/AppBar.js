@@ -3,7 +3,7 @@ import { StatusFilter } from "components/StatusFilter/StatusFilter";
 import { TaskCounter } from "components/TaskCounter/TaskCounter";
 import { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
-import { SelectAll } from "redux/actions";
+import { selectAll } from "redux/tasksSlice";
 import css from "./AppBar.module.css";
 
 export const AppBar = () => {
@@ -14,7 +14,7 @@ export const AppBar = () => {
   const toggleIsOn = () => setIsOn(prevState => !prevState);
   useEffect(() => {
     if (isMounted.current) {
-      dispatch(SelectAll(isOn));
+      dispatch(selectAll(isOn));
       return;
     }
     isMounted.current = true;
