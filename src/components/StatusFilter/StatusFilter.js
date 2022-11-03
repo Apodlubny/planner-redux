@@ -23,7 +23,7 @@ export const StatusFilter = () => {
         selected={filter === statusFilters.active}
         onClick={() => handleFilterChange(statusFilters.active)}
       >
-        Active
+        In progress
       </Button>
       <Button
         selected={filter === statusFilters.completed}

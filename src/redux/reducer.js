@@ -9,19 +9,38 @@ const tasksInitialState = [
   { id: 4, text: "Build amazing apps", completed: false },
 ];
 
-const tasksReducer = (state = tasksInitialState, action) => {
-  switch (action.type) {
+const tasksReducer = (state = tasksInitialState, { type, payload }) => {
+  switch (type) {
     case "tasks/addTask":
-      return [...state, action.payload];
+      return [...state, payload];
     case "tasks/deleteTask":
-      return state.filter(task => task.id !== action.payload);
+      return state.filter(task => task.id !== payload);
     case "tasks/toggleCompleted":
       return state.map(task => {
-        if (task.id !== action.payload) {
+        if (task.id !== payload) {
           return task;
         }
         return { ...task, completed: !task.completed };
       });
+    case "tasks/SelectAll":
+      return state.map(task => {
+        if (payload) {
+          return task.completed
+            ? task
+            : {
+                ...task,
+                completed: true,
+              };
+        }
+
+        return !task.completed
+          ? task
+          : {
+              ...task,
+              completed: false,
+            };
+      });
+
     default:
       return state;
   }
