@@ -1,10 +1,14 @@
 import { createSlice, isAnyOf } from "@reduxjs/toolkit";
 import { fetchTasks, addTask, deleteTask, toggleCompleted } from "./operations";
+
 const extraActions = [fetchTasks, addTask, deleteTask, toggleCompleted];
+
 const getActionsWithType = type => extraActions.map(action => action[type]);
+
 const fetchTasksSuccessReducer = (state, action) => {
   state.items = action.payload;
 };
+
 const addTaskSuccessReducer = (state, action) => {
   state.items.push(action.payload);
 };

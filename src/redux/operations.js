@@ -1,6 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-// eslint-disable-next-line
 import { getTasks } from "./selectors";
 
 axios.defaults.baseURL = "https://62584f320c918296a49543e7.mockapi.io";
@@ -40,8 +39,9 @@ export const deleteTask = createAsyncThunk(
     }
   }
 );
+
 export const toggleCompleted = createAsyncThunk(
-  "/tasks/toggleCompleted",
+  "tasks/toggleCompleted",
   async (task, thunkAPI) => {
     try {
       const response = await axios.put(`/tasks/${task.id}`, {
