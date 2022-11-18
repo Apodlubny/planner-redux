@@ -17,6 +17,7 @@ const clearAuthHeader = () => {
  * POST @ /users/signup
  * body: { name, email, password }
  */
+// credentials - object with info from user input
 export const register = createAsyncThunk(
   "auth/register",
   async (credentials, thunkAPI) => {
